@@ -32,7 +32,7 @@ public class ProductRepository {
         products.add(product);
     }
 
-    public Product findById (Long id){
+    public Product findById (int id){
         return products.stream().filter(p -> p.getId()==id).findFirst().get();
     }
 

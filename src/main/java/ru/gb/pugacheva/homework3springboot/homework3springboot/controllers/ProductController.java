@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.gb.pugacheva.homework3springboot.homework3springboot.models.Product;
@@ -33,6 +34,20 @@ public class ProductController {
     public String saveNewProduct(@RequestParam int id, @RequestParam String title, @RequestParam int cost){
         Product product = new Product(id,title,cost);
         productService.add(product);
+        return "redirect:/";
+    }
+
+    @GetMapping("/decrease/{id}")
+    public String decreaseCost(@PathVariable int id){
+        Product product = productService.findById(id);
+        product.setCost(product.getCost() - 1);
+        return "redirect:/";
+    }
+
+    @GetMapping("/increase/{id}")
+    public String increaseCost(@PathVariable int id){
+        Product product = productService.findById(id);
+        product.setCost(product.getCost() + 1);
         return "redirect:/";
     }
 

@@ -17,6 +17,8 @@
             <td>ID</td>
             <td>Title</td>
             <td>Cost</td>
+            <td></td>
+            <td></td>
         </tr>
         </thead>
 
@@ -25,6 +27,12 @@
             <td th:text="${p.id}"></td>
             <td th:text="${p.title}"></td>
             <td th:text="${p.cost}"></td>
+            <td>
+                <a th:href="@{'/decrease/' + ${p.id}}" class="btn btn-primary">-</a>
+            </td>
+            <td>
+                <a th:href="@{'/increase/' + ${p.id} }" class="btn btn-primary">+</a>
+            </td>
         </tr>
         </tbody>
     </table>
